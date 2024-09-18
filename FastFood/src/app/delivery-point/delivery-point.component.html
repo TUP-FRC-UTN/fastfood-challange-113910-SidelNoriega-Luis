@@ -1,0 +1,16 @@
+<p>Pedido listo para entregar</p>
+@if (Entregas.length<1) {
+    <ul>
+        <li>
+            <p>No hay nada para entregar</p>
+        </li>
+    </ul>
+}
+@for (item of Entregas; track $index) {
+<ul>
+    <li>
+        ({{item.number}}) - {{item.name}} <button type="button"
+            (click)="Entregar($index)">Entregar</button>
+    </li>
+</ul>
+}

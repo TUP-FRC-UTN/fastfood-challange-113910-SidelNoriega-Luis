@@ -1,0 +1,35 @@
+<h2>Componente Cocina</h2>
+
+<h3>Pendiente de cocinar</h3>
+@if (PedidosIngresados.length<1) {
+<ul>
+    <li>
+        <p>No hay pedidos pendientes</p>
+    </li>
+</ul>
+}
+@for (item of PedidosIngresados; track $index) {
+<ul>
+    <li>({{item.number}}) - {{item.description}} <button type="button"
+            (click)="Cocinar($index)"
+            [disabled]="!Cocinando">Cocinar</button>
+    </li>
+</ul>
+}
+
+<h3>Pedidos en cocción</h3>
+@if (PedidoCocinando.length<1) {
+<ul>
+    <li>
+        <p>No se esta cocinando</p>
+    </li>
+</ul>
+}
+@for (item of PedidoCocinando; track $index) {
+<ul>
+    <li>
+        ({{item.number}}) {{item.name}} - {{item.description}}
+    </li>
+</ul>
+<button type="button" (click)="ParaEntrega(item)">Pedido Cocinado</button>
+}

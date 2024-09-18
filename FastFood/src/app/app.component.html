@@ -1,0 +1,11 @@
+<h1>Restaurant FastFood</h1>
+<p>Pedidos ingresados</p>
+@if (PedidosIngresados.length >0) {
+{{PedidosSinFecha() | json}}
+}
+<app-delivery-point [Entregas]="Entregas"></app-delivery-point>
+<p>POS - Point of Sell</p>
+<div style="padding-left:2% ;">
+  <app-pos (ordenar)="CargarPedido($event)"></app-pos>
+  <app-kitchen [PedidosIngresados]="PedidosIngresados" (PedidoCocinado)="CargarPedidoListo($event)"></app-kitchen>
+</div>
